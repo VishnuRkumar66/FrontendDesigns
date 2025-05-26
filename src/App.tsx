@@ -13,6 +13,7 @@ import product from "./assets/product.png";
 import product1 from "./assets/product1.png";
 import extension from "./assets/extension.png";
 import extension1 from "./assets/extension1.png";
+
 const App: React.FC = () => {
   const [mode, setMode] = useState<{ [key: number]: "desktop" | "mobile" }>({});
 
@@ -25,6 +26,7 @@ const App: React.FC = () => {
     pic: string;
     pic1: string;
     desc: string;
+    link: string;
   };
   const content: ContentItem[] = [
     {
@@ -32,18 +34,21 @@ const App: React.FC = () => {
       pic: bento,
       pic1: bento1,
       desc: "Responsive BentoGrid Layout using React, TypeScript, and Tailwind CSS. The layout showcases dynamic cards with varying column and row spans, inspired by modern UI designs.",
+      link: "https://vishnurkumar66.github.io/Bento/",
     },
     {
       id: "PRODUCT LIST",
       pic: product,
       pic1: product1,
       desc: "A Page that updates the UI in multiple places based on user interactions.By using a JSON file, dynamically populated the DOM and it helped me deepen my understanding of how dynamic rendering works in React.",
+      link: "https://vishnurkumar66.github.io/Product/",
     },
     {
       id: "EXTENSION",
       pic: extension,
       pic1: extension1,
       desc: "This project was a fun way to work with dynamic data and add simple filters. I used Tailwind CSS to build a colorful, responsive grid that looks good on any device. It helped me practice building clean and interactive UIs.",
+      link: "https://vishnurkumar66.github.io/Extension/",
     },
   ];
   const [search, setSearch] = useState("");
@@ -59,7 +64,7 @@ const App: React.FC = () => {
           }
           className="flex items-center cursor-pointer"
         >
-          <img className="w-7 h-7 rounded-2xl mr-5" src={vrk} alt="" />
+          <img className="w-7 h-7 rounded-2xl  mr-5" src={vrk} alt="" />
           <h2 className="hidden md:block tracking-tight text-[#FBEAEB]">
             VISHNU R KUMAR
           </h2>
@@ -97,7 +102,7 @@ const App: React.FC = () => {
             onClick={() =>
               window.open("http://www.linkedin.com/in/vishnurkumar66")
             }
-            className="hover:text-blue-500 
+            className="hover:text-blue-500
           hover:scale-120 transition-transform"
           />
         </div>
@@ -112,17 +117,20 @@ const App: React.FC = () => {
               className="flex rounded flex-col m-auto bg-[#FBEAEB] p-2"
             >
               <div className="">
-                <img
-                  className="h-49 w-84 hover:scale-102 transition-transform  rounded cursor-pointer"
-                  src={mode[index] === "mobile" ? item.pic1 : item.pic}
-                  alt="pic"
-                />
+                <a href={item.link} target="_blank" rel="noopener noreferrer">
+                  <img
+                    className="h-49 w-84 hover:scale-102 m-auto transition-transform rounded cursor-pointer"
+                    src={mode[index] === "mobile" ? item.pic1 : item.pic}
+                    alt="pic"
+                  />
+                </a>
               </div>
+
               <div className="h-36">
                 <div className="flex text-white justify-evenly italic font-semibold text-[10px]">
                   <button
                     onClick={() => handleClick(index, "desktop")}
-                    className="border rounded-lg p-2 my-2 bg-violet-950 hover:bg-violet-800 
+                    className="border rounded-lg p-2 my-2 bg-violet-950 hover:bg-violet-800
                     cursor-pointer"
                   >
                     DESKTOP DESIGN
@@ -134,7 +142,12 @@ const App: React.FC = () => {
                     MOBILE DESIGN
                   </button>
                 </div>
-                <div className="font-bold text-amber-900">{item.id}</div>
+                <div
+                  onClick={() => window.open(item.link)}
+                  className="font-bold text-amber-900 cursor-pointer hover:text-amber-600"
+                >
+                  {item.id}
+                </div>
                 <div className="text-[12px]/[15px] text-black/70">
                   {item.desc}
                 </div>
