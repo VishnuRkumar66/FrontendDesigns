@@ -144,7 +144,7 @@ const App: React.FC = () => {
                 </div>
                 <div
                   onClick={() => window.open(item.link)}
-                  className="font-bold text-amber-900 cursor-pointer hover:text-amber-600"
+                  className="font-bold text-amber-900 cursor-pointer hover:text-amber-600 w-fit"
                 >
                   {item.id}
                 </div>
